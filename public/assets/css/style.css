@@ -1,0 +1,94 @@
+nav.navbar.navbar-default {
+  background-color: #fff;
+  border: 0;
+  min-height: 100px; }
+  nav.navbar.navbar-default .navbar-header a.navbar-brand {
+    height: 60px;
+    padding: 0px;
+    margin: 15px; }
+    nav.navbar.navbar-default .navbar-header a.navbar-brand img {
+      height: 100%;
+      width: auto; }
+
+.navbar-form {
+  margin: 28px 0; }
+  .navbar-form .form-group {
+    margin-right: 5px; }
+  .navbar-form .btn-success {
+    background-color: #29abe2;
+    border-color: #29abe2;
+    padding: 6px 26px;
+    text-transform: uppercase; }
+
+footer {
+  background: -moz-linear-gradient(top, rgba(41, 171, 226, 0.8) 0%, rgba(148, 213, 240, 0.8) 100%);
+  background: -webkit-linear-gradient(top, rgba(41, 171, 226, 0.8) 0%, rgba(148, 213, 240, 0.8) 100%);
+  background: linear-gradient(to bottom, rgba(41, 171, 226, 0.8) 0%, rgba(148, 213, 240, 0.8) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc29abe2', endColorstr='#cc94d5f0',GradientType=0 );
+  padding: 320px 0 75px 0;
+  position: relative;
+  z-index: -999; }
+  footer:before {
+    content: '';
+    display: block;
+    background: white;
+    width: 100%;
+    height: 270px;
+    position: absolute;
+    top: -146px;
+    transform: skewY(-7deg); }
+  footer p {
+    font-size: 14px;
+    color: #fff; }
+    footer p .footer-logo {
+      width: 45px;
+      margin-right: 10px; }
+    footer p a {
+      color: #fff; }
+      footer p a:hover {
+        color: #fff; }
+  footer .social-media-icons > a > img {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin: 5px 10px 0 0; }
+  footer .store-icons img {
+    width: 120px;
+    display: inline; }
+
+body, html {
+  font-family: "Roboto", sans-serif;
+  color: #2c2c2c;
+  font-size: 16px; }
+
+h1 {
+  color: #2c2c2c;
+  font-size: 2.625rem;
+  line-height: 3.438rem;
+  margin-bottom: 5px; }
+
+h2 {
+  color: #94d5f0;
+  font-size: 1.625rem;
+  line-height: 2.125rem;
+  margin: 0 0 10px 0;
+  font-weight: 400; }
+
+.content {
+  margin: 60px 0px 0px 60px; }
+  .content p {
+    font-size: 1.125rem;
+    margin-bottom: 22px; }
+  .content .btn {
+    background-color: #29abe2;
+    color: #fff;
+    padding: 10px 24px;
+    text-transform: uppercase;
+    font-size: 1.375rem; }
+  .content .btn:after {
+    content: url("../imgs/triangle.svg");
+    height: 18px;
+    width: auto;
+    padding-left: 10px; }
+
+/*# sourceMappingURL=style.css.map */
