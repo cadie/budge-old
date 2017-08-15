@@ -23,31 +23,36 @@
           <a class="navbar-brand" href="index.html"><img class="img-responsive" src="assets/imgs/budge-logo.png" alt="Budge | Budgeting Made Simple" title="Budge | Budgeting Made Simple"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input name="email" type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input name="password" type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Log In</button>
-          </form>
+          <p class="pull-right">Have an account? <a href="index.html">Log in</a></p>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
 
   <div class="container">
 
-    <div class="homepage-content content col-md-5">
-      <h1>Budget Your Money</h1>
-      <h2>Simple. Fast. Smart.</h2>
-      <p>Take control of your finances. Budget makes managing your money easy and pain-free, allowing you to account for every penny you make.</p>
-      <a class="btn" href="sign-up.html">SIGN UP</a>
+    <div class="sign-up-content content col-md-4 col-md-offset-4">
+
+      <h1>Join Budge today.</h1>
+
+      <form id="sign-up-form" class="">
+        <div class="form-group">
+          <input name="full-name" type="text" placeholder="Full Name" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <input name="email" type="email" placeholder="Email" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <input name="password" type="password" placeholder="Password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success">Sign Up</button>
+      </form>
+      <p class="small">By signing up, you agree to the <a href="">Terms of Service</a> and <a href="">Privacy Policy</a>, including <a href="">Cookie Use</a>. Others will be able to find you by email or phone number when provided.</p>
+
     </div>
 
   </div>
 
-  <footer id="homepage-footer">
+  <footer>
     <div class="container">
       <div class="col-md-6">
         <p><img src="assets/imgs/circle-logo.svg" alt="Budge" class="footer-logo"> &copy; Budge 2017. All Rights Reserved. | <a href="#">Contact Us</a> | <a href="#">Privacy Policy</a></p>
