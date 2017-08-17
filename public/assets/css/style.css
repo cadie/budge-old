@@ -23,6 +23,19 @@ nav.navbar.navbar-default {
     padding: 6px 26px;
     text-transform: uppercase; }
 
+#dashboard .navbar-inverse .navbar-nav > .open > a, #dashboard .navbar-inverse .navbar-nav > .open > a:focus, #dashboard .navbar-inverse .navbar-nav > .open > a:hover {
+  background-color: #29abe2; }
+#dashboard .navbar-inverse {
+  background-color: #94d5f0;
+  border: 0;
+  border-radius: 0px; }
+  #dashboard .navbar-inverse .navbar-nav > li > a {
+    color: #fff; }
+#dashboard .navbar-brand {
+  padding: 10px 15px; }
+  #dashboard .navbar-brand img {
+    height: 30px; }
+
 #homepage-footer {
   padding: 320px 0 75px 0;
   position: relative;
@@ -61,6 +74,75 @@ footer {
   footer .store-icons img {
     width: 120px;
     display: inline; }
+
+#sidebar {
+  width: 300px;
+  background: #94d5f0;
+  text-align: center;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  left: 0; }
+  #sidebar .welcome {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
+    #sidebar .welcome a img {
+      width: 75px;
+      margin-bottom: 25px; }
+    #sidebar .welcome h2 {
+      font-weight: 100;
+      color: #fff;
+      margin-bottom: 35px; }
+    #sidebar .welcome .user-name {
+      font-weight: 500; }
+  #sidebar .sidebar-links {
+    margin-top: 30px; }
+    #sidebar .sidebar-links a {
+      color: #fff;
+      display: block;
+      text-align: left;
+      padding: 10px 0;
+      font-size: 20px;
+      font-weight: bold; }
+  #sidebar .account-section {
+    position: absolute;
+    bottom: 20px; }
+    #sidebar .account-section .initials {
+      color: #94d5f0;
+      font-size: 1.875rem;
+      margin-top: 9px;
+      position: initial; }
+    #sidebar .account-section .col-sm-4 a {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 60px;
+      width: 60px;
+      height: 60px;
+      display: block; }
+
+#content {
+  margin-left: 300px;
+  padding: 20px 40px; }
+  #content .header {
+    border-bottom: 1px solid #bbb; }
+    #content .header h1 {
+      margin: 0;
+      margin-bottom: 20px; }
+  #content .search {
+    margin-top: 30px; }
+
+#dashboard .search-budget-btn {
+  height: 34px;
+  font-size: 18px !important;
+  padding: 0px 15px !important; }
+#dashboard .search-budget-btn:after {
+  content: '';
+  padding: 0; }
+#dashboard .new-budget-btn {
+  height: 34px;
+  font-size: 18px !important;
+  padding: 0px 15px !important; }
+#dashboard .new-budget-btn:after {
+  content: '';
+  padding: 0; }
 
 body, html {
   font-family: "Roboto", sans-serif;

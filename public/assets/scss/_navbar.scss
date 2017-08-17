@@ -41,3 +41,31 @@ nav.navbar.navbar-default {
   }
 
 }
+
+// DASHBOARD NAVBAR
+
+#dashboard {
+
+  .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    background-color:$primary-color;
+  }
+
+  .navbar-inverse {
+    background-color: $secondary-color;
+    border:0;
+    border-radius: 0px;
+
+    .navbar-nav>li>a {
+      color:$white;
+    }
+
+  }
+
+  .navbar-brand {
+    padding:10px 15px;
+    img {
+      height:30px;
+    }
+  }
+
+}
