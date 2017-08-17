@@ -53,7 +53,7 @@
         <hr>
 
         <div class="search-container">
-            <div class="col-md-6">
+            <div class="col-sm-8">
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search for...">
                 <span class="input-group-btn">
@@ -61,12 +61,15 @@
                 </span>
               </div><!-- /input-group -->
             </div>
-            <div class="col-md-6">
-              <div class="input-group">
+            <div class="col-sm-4">
+              <div class="input-group pull-right">
                 <button class="btn btn-default new-budget-btn" type="button">New Budget</button>
-              </div><!-- /input-group -->
+              </div>
             </div>
         </div>
+        <div class="clearfix"></div>
+        <div id="budgets-list"></div>
+
 
       </div>
     </div>
@@ -79,37 +82,56 @@
 
 
 
+    <!-- jQuery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
 
 <script>
-  var sidebarTemplate;
+  var budgetsList;
 
   $(document).ready(function(){
       {
-          var source = $("#sidebar-template").html();
-          sidebarTemplate = Handlebars.compile(source);
+          var source = $("#budget-list-template").html();
+          budgetListTemplate = Handlebars.compile(source);
       }
 
       {
           //get this from AJAX
-          var context = {firstname: "Bryce", initials: "BS", email: "brycestockman@gmail.com"};
+          var context = {budgets:[
+            {budgetName: "March Budget", desc: "A budget for March 2017", lastUpdated: "3/11/17"},
+            {budgetName: "Sarah's Budget", desc: "Sarah's allowance budget", lastUpdated: "6/22/17"},
+            {budgetName: "Weekly Budget", desc: "The test budget", lastUpdated: "4/13/17"}]};
 
-          var html = sidebarTemplate(context);
+          var html = budgetListTemplate(context);
 
-          $("#sidebar").html(html);
+          $("#budgets-list").html(html);
       }
 
 
   });
 </script>
-<!-- jQuery CDN -->
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script id="budget-list-template" type="text/x-handlebars-template">
+  <div class="budget">
+    {{#each budgets}}
+      <div class="col-md-12"><hr></div>
+      <div class="col-md-10">
+        <h2><a href="/posts/{{../permalink}}#{{id}}">{{budgetName}}</a></h2>
+        <p>{{desc}}</p>
+      </div>
+      <div class="col-md-2">
+        <p class="pull-right">{{lastUpdated}}</p>
+      </div>
+    {{/each}}
+  </div>
+</script>
 
 
 </body>
