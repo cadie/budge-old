@@ -78,23 +78,17 @@
 
 <script>
   var sidebarTemplate;
-
   $(document).ready(function(){
       {
           var source = $("#sidebar-template").html();
           sidebarTemplate = Handlebars.compile(source);
       }
-
       {
           //get this from AJAX
           var context = {firstname: "Bryce", initials: "BS", email: "brycestockman@gmail.com"};
-
           var html = sidebarTemplate(context);
-
           $("#sidebar").html(html);
       }
-
-
   });
 </script>
 <!-- jQuery CDN -->

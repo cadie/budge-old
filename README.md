@@ -1,2 +1,0 @@
-# budge
-Budge - Budget App
