@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
       email:DataTypes.STRING,
       fullname:DataTypes.STRING,
       income: DataTypes.INTEGER,
-      sum: DataTypes.INTEGER,
+      total: DataTypes.INTEGER,
       
     });
     return Budget;
