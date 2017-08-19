@@ -8,6 +8,8 @@ var passport = require("./config/passport");
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8083;
 var db = require("./models");
+// var exphbs = require('express-handlebars'); app.engine('handlebars', 
+// exphbs({defaultLayout: 'main'})); app.set('view engine', 'handlebars');
 
 // Creating express app and configuring middleware needed for authentication
 var app = express();

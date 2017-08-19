@@ -63,16 +63,16 @@ module.exports = function(app) {
 
 
 
-             // GET route for getting all of the todos
+             // GET route for getting all of the expenses
              app.get("/api/members", function(req, res) {
                 // findAll returns all entries for a table when used with no options
                 db.Budget.findAll({where:req.body.email}).then(function(dbBudget) {
-                  // We have access to the todos as an argument inside of the callback function
+                  // We have access to the expenses as an argument inside of the callback function
                   res.json(dbBudget);
                 });
               });
 
-              // POST route for saving a new todo
+              // POST route for saving a new expense
               app.post("/api/members", function(req, res) {
                 // create takes an argument of an object describing the item we want to
                 // insert into our table. In this case we just we pass in an object with a text
@@ -80,15 +80,27 @@ module.exports = function(app) {
                 db.Budget.create({
                   text: req.body.text,
                   amount: req.body.amount,
+                  income:req.body.income,
+                  total:req.body.total,
                   email:req.user.email,
                   fullname:req.user.fullname,
                 }).then(function(dbBudget) {
-                  // We have access to the new todo as an argument inside of the callback function
+                  // We have access to the new expenses as an argument inside of the callback function
                   res.json(dbBudget);
                 });
               });
 
-              // DELETE route for deleting todos. We can get the id of the todo to be deleted from
+
+
+
+
+
+
+
+
+
+              
+              // DELETE route for deleting expenses. We can get the id of the expenses to be deleted from
               // req.params.id
               app.delete("/api/members/:id", function(req, res) {
                 db.Budget.destroy({
@@ -104,7 +116,7 @@ module.exports = function(app) {
 
               });
 
-              // PUT route for updating todos. We can get the updated todo data from req.body
+              // PUT route for updating expenses. We can get the updated expenses data from req.body
               app.put("/api/members", function(req, res) {
                 db.Budget.update({
                  text: req.body.text,
@@ -115,8 +127,8 @@ module.exports = function(app) {
             .then(function(dbBudget) {
                  res.json(dbBudget)
             })
-                // Use the sequelize update method to update a todo to be equal to the value of req.body
-                // req.body will contain the id of the todo we need to update
+                // Use the sequelize update method to update a expenses to be equal to the value of req.body
+                // req.body will contain the id of the expenses we need to update
               });
 
 

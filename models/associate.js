@@ -1,9 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
-    var Associate = sequelize.define("Associate", {
-      text: DataTypes.STRING,
-      amount: DataTypes.INTEGER
-      
-    });
-    return Associate;
-  };
-  
+
+  Associate = sequelize.define('Associate', {
+      total: DataTypes.INTEGER
+  })
+   
+  // User.belongsToMany(Budget, { through: Associate })
+  // Budget.belongsToMany(User, { through: Associate })
+
+  return Associate;
+};

@@ -1,11 +1,12 @@
 
   $(document).ready(function() {
-    // Getting a reference to the input field where user adds a new todo
+    // Getting a reference to the input field where user adds a new expenses
     var newItemInput = $("input.new-item");
     var newItemInput2 = $("input.new-item2");
-    // Our new todos will go inside the todoContainer
+    var newItemInput3 = $("input.new-item3");
+    
     var expenseContainer = $(".expense-container");
-    // Adding event listeners for deleting, editing, and adding todos
+    // Adding event listeners for deleting, editing, and adding expenses
     $(document).on("click", "button.delete", deleteBudget);
     $(document).on("click", "button.complete", toggleComplete);
     $(document).on("click", ".expense-item", editBudget);
@@ -13,13 +14,13 @@
     $(document).on("blur", ".expense-item", cancelEdit);
     $(document).on("submit", "#expense-form", insertBudget);
 
-    // Our initial todos array
+    // Our initial expenses array
     var expenses;
 
-    // Getting todos from database when page loads
+    // Getting expenses from database when page loads
     getExpenses();
 
-    // This function resets the todos displayed with new todos from the database
+    // This function resets the expenses displayed with new expenses from the database
     function initializeRows() {
       expenseContainer.empty();
       var rowsToAdd = [];
@@ -29,7 +30,7 @@
       expenseContainer.prepend(rowsToAdd);
     }
 
-    // This function grabs todos from the database and updates the view
+    // This function grabs expenses from the database and updates the view
     function getExpenses() {
       $.get("/api/members", function(data) {
         console.log("Budget", data);
@@ -38,7 +39,7 @@
       });
     }
 
-    // This function deletes a todo when the user clicks the delete button
+    // This function deletes a expenses when the user clicks the delete button
     function deleteBudget() {
       var id = $(this).data("id");
       $.ajax({
@@ -50,8 +51,8 @@
       });
     }
 
-    // This function sets a todos complete attribute to the opposite of what it is
-    // and then runs the updateTodo function
+    // This function sets a expenses complete attribute to the opposite of what it is
+    // and then runs the updateExpenses function
     function toggleComplete() {
       var expense = $(this)
         .parent()
@@ -61,7 +62,7 @@
       updateExpense(expense);
     }
 
-    // This function handles showing the input box for a user to edit a todo
+    // This function handles showing the input box for a user to edit a expenses
     function editBudget() {
       var currentExpense = $(this).data("expense");
       $(this)
@@ -79,7 +80,7 @@
         .focus();
     }
 
-    // This function starts updating a todo in the database if a user hits the
+    // This function starts updating a expenses in the database if a user hits the
     // "Enter Key" While in edit mode
     function finishEdit(event) {
       var updatedExpense;
@@ -96,6 +97,14 @@
             .children("input")
             .val()
             .trim(),
+            income: $(this)
+            .children("input")
+            .val()
+            .trim(),
+            total: $(this)
+            .children("input")
+            .val()
+            .trim(),
 
         };
         $(this).blur();
@@ -103,7 +112,7 @@
       }
     }
 
-    // This function updates a todo in our database
+    // This function updates a expenses in our database
     function updateExpense(expense) {
       $.ajax({
         method: "PUT",
@@ -115,7 +124,7 @@
       });
     }
 
-    // This function is called whenever a todo item is in edit mode and loses focus
+    // This function is called whenever a expenses item is in edit mode and loses focus
     // This cancels any edits being made
     function cancelEdit() {
       var currentExpense = $(this).data("expense");
@@ -134,7 +143,7 @@
         .show();
     }
 
-    // This function constructs a todo-item row
+    // This function constructs a expenses-item row
     function createNewRow(expense) {
       var newInputRow = $("<li>");
       newInputRow.addClass("list-group-item expense-item");
@@ -159,7 +168,7 @@
       return newInputRow;
     }
 
-    // This function inserts a new todo into our database and then updates the view
+    // This function inserts a new expenses into our database and then updates the view
     function insertBudget(event) {
       event.preventDefault();
       // if (!newItemInput.val().trim()) {   return; }
@@ -170,11 +179,14 @@
         amount: newItemInput2
           .val()
           .trim(),
+        income: newItemInput3
+          .val()
+          .trim(),
 
 
       };
 
-      // Posting the new todo, calling getTodos when done
+      // Posting the new expenses, calling getExpenses when done
       $.post("/api/members", expense, function() {
         getExpenses();
       });
