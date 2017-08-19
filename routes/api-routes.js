@@ -12,7 +12,7 @@ module.exports = function(app) {
         // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
         // So we're sending the user back the route to the members page because the redirect will happen on the front end
         // They won't get this or even be able to access this page if they aren't authenticaticated
-        res.json("/members");
+        res.json("/dashboard");
     });
 
     // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -71,7 +71,7 @@ module.exports = function(app) {
                   res.json(dbBudget);
                 });
               });
-            
+
               // POST route for saving a new todo
               app.post("/api/members", function(req, res) {
                 // create takes an argument of an object describing the item we want to
@@ -87,7 +87,7 @@ module.exports = function(app) {
                   res.json(dbBudget);
                 });
               });
-            
+
               // DELETE route for deleting todos. We can get the id of the todo to be deleted from
               // req.params.id
               app.delete("/api/members/:id", function(req, res) {
@@ -97,13 +97,13 @@ module.exports = function(app) {
             .then(function(dbBudget) {
                  res.json(dbBudget)
             })
-            
-              
+
+
                 // Use the sequelize destroy method to delete a record from our table with the
                 // id in req.params.id. res.json the result back to the user
-            
+
               });
-            
+
               // PUT route for updating todos. We can get the updated todo data from req.body
               app.put("/api/members", function(req, res) {
                 db.Budget.update({
@@ -118,15 +118,7 @@ module.exports = function(app) {
                 // Use the sequelize update method to update a todo to be equal to the value of req.body
                 // req.body will contain the id of the todo we need to update
               });
-            
-               
+
+
     });
-}       
-                    
-            
-            
-                
-                        
-                
-            
-            
+}

@@ -12,13 +12,13 @@
     $(document).on("keyup", ".expense-item", finishEdit);
     $(document).on("blur", ".expense-item", cancelEdit);
     $(document).on("submit", "#expense-form", insertBudget);
-  
+
     // Our initial todos array
     var expenses;
-  
+
     // Getting todos from database when page loads
     getExpenses();
-  
+
     // This function resets the todos displayed with new todos from the database
     function initializeRows() {
       expenseContainer.empty();
@@ -28,7 +28,7 @@
       }
       expenseContainer.prepend(rowsToAdd);
     }
-  
+
     // This function grabs todos from the database and updates the view
     function getExpenses() {
       $.get("/api/members", function(data) {
@@ -37,7 +37,7 @@
         initializeRows();
       });
     }
-  
+
     // This function deletes a todo when the user clicks the delete button
     function deleteBudget() {
       var id = $(this).data("id");
@@ -49,18 +49,18 @@
         getExpenses();
       });
     }
-  
+
     // This function sets a todos complete attribute to the opposite of what it is
     // and then runs the updateTodo function
     function toggleComplete() {
       var expense = $(this)
         .parent()
         .data("expense");
-  
+
       expense.complete = !expense.complete;
       updateExpense(expense);
     }
-  
+
     // This function handles showing the input box for a user to edit a todo
     function editBudget() {
       var currentExpense = $(this).data("expense");
@@ -70,7 +70,7 @@
       $(this)
         .children("input.edit")
         .val(currentExpense.text)
-        
+
       $(this)
         .children("input.edit")
         .show();
@@ -78,7 +78,7 @@
         .children("input.edit")
         .focus();
     }
-  
+
     // This function starts updating a todo in the database if a user hits the
     // "Enter Key" While in edit mode
     function finishEdit(event) {
@@ -102,7 +102,7 @@
         updateExpense(updatedExpense);
       }
     }
-  
+
     // This function updates a todo in our database
     function updateExpense(expense) {
       $.ajax({
@@ -114,7 +114,7 @@
         getExpenses();
       });
     }
-  
+
     // This function is called whenever a todo item is in edit mode and loses focus
     // This cancels any edits being made
     function cancelEdit() {
@@ -125,7 +125,7 @@
       $(this)
         .children("input.edit")
         .val(currentExpense.text)
-        
+
       $(this)
         .children("span")
         .show();
@@ -133,14 +133,14 @@
         .children("button")
         .show();
     }
-  
+
     // This function constructs a todo-item row
     function createNewRow(expense) {
       var newInputRow = $("<li>");
       newInputRow.addClass("list-group-item expense-item");
       var newExpenseSpan = $("<span>");
       newExpenseSpan.text(expense.text);
-      
+
       newInputRow.append(newExpenseSpan);
       var newExpenseInput = $("<input>");
       newExpenseInput.attr("type", "text");
@@ -151,18 +151,14 @@
       newDeleteBtn.addClass("delete btn btn-default");
       newDeleteBtn.text("x");
       newDeleteBtn.data("id", expense.id);
-      var newCompleteBtn = $("<button>");
-      newCompleteBtn.addClass("complete btn btn-default");
-      newCompleteBtn.text("✓");
       newInputRow.append(newDeleteBtn);
-      newInputRow.append(newCompleteBtn);
       newInputRow.data("expense", expense);
       if (expense.complete) {
         newExpenseSpan.css("text-decoration", "line-through");
       }
       return newInputRow;
     }
-  
+
     // This function inserts a new todo into our database and then updates the view
     function insertBudget(event) {
       event.preventDefault();
@@ -174,10 +170,10 @@
         amount: newItemInput2
           .val()
           .trim(),
-       
-        
+
+
       };
-  
+
       // Posting the new todo, calling getTodos when done
       $.post("/api/members", expense, function() {
         getExpenses();
@@ -185,8 +181,7 @@
       newItemInput.val(""),
       newItemInput2.val("");
 
-      
+
     }
-  
+
   });
-  

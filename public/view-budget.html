@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Your Budgets | Budge</title>
+  <title>View Budget | Budge</title>
   <link rel="icon" type="image/png" href="assets/imgs/favicon.png">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -23,7 +23,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php"><img src="assets/imgs/circle-logo.svg" alt="Budge"></a>
+          <a class="navbar-brand" href="index.html"><img src="assets/imgs/circle-logo.svg" alt="Budge"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -47,23 +47,40 @@
     <div class="content">
       <div class="container">
         <div class="col-md-12">
-          <h1>Your Budgets</h1>
+          <h1>Create New Budget</h1>
           <hr>
         </div>
         <hr>
-
-        <div class="search-container">
-            <div class="col-md-6">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                  <button class="btn btn-default search-budget-btn" type="button">Go!</button>
-                </span>
-              </div><!-- /input-group -->
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+              <ul class="list-group expense-list">
+                  <li class="list-group-item new-item">
+                      <input class="salary-amount form-field" placeholder="Amount to Budget" type="text" />
+                      <li class="list-group-item new-item2">
+                      <form id="expense-form">
+                        <input class="new-item form-field" placeholder="Add Expense" type="text" />
+                        <input class="new-item2 form-field" placeholder="Add Amount" type="text" />
+                        <button type="submit" class="btn btn-default">Budge</button>
+                      </form>
+                  </li>
+              </li>
+              <!-- This is the span container where the items added are populated -->
+              <span class="expense-container">
+              </span>
+            </ul>
+            <div class="results-container">
+              <p>Total of Expenses:
+                <!-- This is the span container where the sum of all of the expenses should be inputted -->
+                <span id="total-expenses"></span>
+              </p>
+              <p>Left Over:
+                <!-- This is where the result of (salary amount - expense amount) should be inputted -->
+                <span id="left-over"></span>
+              </p>
             </div>
         </div>
 
-        <div id="budgets-list"></div>
+
 
       </div>
     </div>
@@ -81,51 +98,14 @@
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
-
-<script>
-  var budgetsList;
-
-  $(document).ready(function(){
-      {
-          var source = $("#budget-list-template").html();
-          budgetListTemplate = Handlebars.compile(source);
-      }
-
-      {
-          //get this from AJAX
-          var context = {budgets:[
-            {budgetName: "March Budget", desc: "A budget for March 2017", lastUpdated: "3/11/17"},
-            {budgetName: "Sarah's Budget", desc: "Sarah's allowance budget", lastUpdated: "6/22/17"},
-            {budgetName: "Weekly Budget", desc: "The test budget", lastUpdated: "4/13/17"}]};
-
-          var html = budgetListTemplate(context);
-
-          $("#budgets-list").html(html);
-      }
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/members.js"></script>
+    <script type="text/javascript" src="js/view.js"></script>
 
 
-  });
-</script>
-
-<script id="budget-list-template" type="text/x-handlebars-template">
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="budget">
-              {{#each budgets}}
-                <h2><a href="/posts/{{../permalink}}#{{id}}">{{budgetName}}</a></h2>
-                <div>{{desc}}</div>
-              {{/each}}
-            </div>
-        </div>
-    </div>
-</script>
-
-
-
-</body>
-</html>
+    </body>
+    </html>
